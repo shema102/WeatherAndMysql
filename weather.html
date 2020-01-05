@@ -3,16 +3,20 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Weather</title>
-		<script type="text/javascript"></script>
-		<style type="text/css"></style>
+		<style type="text/css">
+			body {
+				text-align: center;
+				vertical-align: middle;
+			}
+		</style>
 	</head>
 	<body>
 		<h2>Weather forecast</h2>
-		<form action="/weather.php" method="post">
-		  <label for="city">City name:</label>
-		  <input type="text" name="city" id="city">
-		  <input type="submit">
-		</form> 
+			<form action="/weather.php" method="post">
+			  <label for="city">City name:</label>
+			  <input type="text" name="city" id="city">
+			  <input type="submit">
+			</form>
 		<p>По кліку відправляє введені дані в файл "/weather.php".</p>
 	</body>
 </html>

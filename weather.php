@@ -32,16 +32,7 @@ include 'StoreUpdateWeather.php';
       ${'day'.$d.'t'.$t.'time'}     = $weatherdata["day".$d."t".$t."time"];
     }
   }
-/*
-for ($d = 0; $d < 6; $d++) { 
-  for ($t = 2; $t <= 23; $t = $t + 3) {
-      echo ${'day'.$d.'t'.$t.'temp'} . " ";
-      echo ${'day'.$d.'t'.$t.'pressure'} . " ";
-      echo ${'day'.$d.'t'.$t.'humidity'} . " ";
-      echo ${'day'.$d.'t'.$t.'pic_url'} . " ";
-      echo ${'day'.$d.'t'.$t.'time'} . "\n";
-  }
-}*/
+$mmrtst = 0.75006375541921;
 
 ?>
 <html>
@@ -56,9 +47,9 @@ for ($d = 0; $d < 6; $d++) {
         animation-iteration-count:infinite;
     }
 
-    #wrapper div {
+    #wrapper div{
       display: inline-block;
-      width: 220px;
+      width: 230px;
       height: 310px;
       background: yellow;
       animation: colorchange1 50s;
@@ -68,21 +59,22 @@ for ($d = 0; $d < 6; $d++) {
       margin: 1em;
       text-align: center;
       vertical-align: middle;
-
     }
 
-    section{
-      vertical-align: middle;
-    }
-      p {
+    p{
         color: red;
-        font: italic 100% Arial Black;
+        font: italic 110% Arial Black;
         animation: colorchange2 50s;
         animation-iteration-count:infinite;
-      }
-      h2 {
+        text-shadow: 0 1px black;
+    }
+
+    h2{
         font: bold italic 200% serif;
-      }
+        text-align: center;
+        text-shadow: 0 3px black;
+    }
+
     @keyframes colorchange
     {
       0%   {background: red;}
@@ -91,7 +83,6 @@ for ($d = 0; $d < 6; $d++) {
       75%  {background: green;}
       100% {background: red;}
     }
-
     @keyframes colorchange1
     {
       0%   {background: yellow;}
@@ -100,7 +91,6 @@ for ($d = 0; $d < 6; $d++) {
       75%  {background: red;}
       100% {background: yellow;}
     }
-
     @keyframes colorchange2
     {
       0%   {color: green;}
@@ -121,7 +111,7 @@ for ($d = 0; $d < 6; $d++) {
                     echo "<br><a href='https://openweathermap.org/api'><img src=$pic_url  width=100 height=100></a><br>";
                     echo "<p>Температура: " . number_format($day1t5temp, 0) . "° <br>";
 
-                    echo "Тиск: " . number_format($day1t5pressure * 0.75006375541921, 2)  . " мм рт. ст. <br>";
+                    echo "Тиск: " . number_format($day1t5pressure * $mmrtst, 2)  . " мм рт. ст. <br>";
 
                     echo "Вологість: " . $day1t5humidity . " %</p><br>";
                 ?>
@@ -129,27 +119,27 @@ for ($d = 0; $d < 6; $d++) {
 
           <div class="forecastday">
                 <?php
-                    echo date("<p>d.m.y ", $day1t5time) . "<strong><br>Ранок</strong></p>";
-                    $pic_url = "http://openweathermap.org/img/wn/" . $day1t5pic_url . "@2x.png";
+                    echo date("<p>d.m.y ", $day1t14time) . "<strong><br>День</strong></p>";
+                    $pic_url = "http://openweathermap.org/img/wn/" . $day1t14pic_url . "@2x.png";
                     echo "<br><a href='https://openweathermap.org/api'><img src=$pic_url  width=100 height=100></a><br>";
-                    echo "<p>Температура: " . number_format($day1t5temp, 0) . "° <br>";
+                    echo "<p>Температура: " . number_format($day1t14temp, 0) . "° <br>";
 
-                    echo "Тиск: " . number_format($day1t5pressure * 0.75006375541921, 2)  . " мм рт. ст. <br>";
+                    echo "Тиск: " . number_format($day1t14pressure * $mmrtst, 2)  . " мм рт. ст. <br>";
 
-                    echo "Вологість: " . $day1t5humidity . " %</p><br>";
+                    echo "Вологість: " . $day1t14humidity . " %</p><br>";
                 ?>
           </div>
 
           <div class="forecastday">
                 <?php
-                    echo date("<p>d.m.y ", $day1t5time) . "<strong><br>Ранок</strong></p>";
-                    $pic_url = "http://openweathermap.org/img/wn/" . $day1t5pic_url . "@2x.png";
+                    echo date("<p>d.m.y ", $day1t20time) . "<strong><br>Вечір</strong></p>";
+                    $pic_url = "http://openweathermap.org/img/wn/" . $day1t20pic_url . "@2x.png";
                     echo "<br><a href='https://openweathermap.org/api'><img src=$pic_url  width=100 height=100></a><br>";
-                    echo "<p>Температура: " . number_format($day1t5temp, 0) . "° <br>";
+                    echo "<p>Температура: " . number_format($day1t20temp, 0) . "° <br>";
 
-                    echo "Тиск: " . number_format($day1t5pressure * 0.75006375541921, 2)  . " мм рт. ст. <br>";
+                    echo "Тиск: " . number_format($day1t20pressure * $mmrtst, 2)  . " мм рт. ст. <br>";
 
-                    echo "Вологість: " . $day1t5humidity . " %</p><br>";
+                    echo "Вологість: " . $day1t20humidity . " %</p><br>";
                 ?>
           </div>
         </section>
@@ -158,40 +148,40 @@ for ($d = 0; $d < 6; $d++) {
 
           <div class="forecastday">
                 <?php
-                    echo date("<p>d.m.y ", $day1t5time) . "<strong><br>Ранок</strong></p>";
-                    $pic_url = "http://openweathermap.org/img/wn/" . $day1t5pic_url . "@2x.png";
+                    echo date("<p>d.m.y ", $day2t5time) . "<strong><br>Ранок</strong></p>";
+                    $pic_url = "http://openweathermap.org/img/wn/" . $day2t5pic_url . "@2x.png";
                     echo "<br><a href='https://openweathermap.org/api'><img src=$pic_url  width=100 height=100></a><br>";
-                    echo "<p>Температура: " . number_format($day1t5temp, 0) . "° <br>";
+                    echo "<p>Температура: " . number_format($day2t5temp, 0) . "° <br>";
 
-                    echo "Тиск: " . number_format($day1t5pressure * 0.75006375541921, 2)  . " мм рт. ст. <br>";
+                    echo "Тиск: " . number_format($day2t5pressure * $mmrtst, 2)  . " мм рт. ст. <br>";
 
-                    echo "Вологість: " . $day1t5humidity . " %</p><br>";
+                    echo "Вологість: " . $day2t5humidity . " %</p><br>";
                 ?>
           </div>
 
           <div class="forecastday">
                 <?php
-                    echo date("<p>d.m.y ", $day1t5time) . "<strong><br>Ранок</strong></p>";
-                    $pic_url = "http://openweathermap.org/img/wn/" . $day1t5pic_url . "@2x.png";
+                    echo date("<p>d.m.y ", $day2t14time) . "<strong><br>День</strong></p>";
+                    $pic_url = "http://openweathermap.org/img/wn/" . $day2t14pic_url . "@2x.png";
                     echo "<br><a href='https://openweathermap.org/api'><img src=$pic_url  width=100 height=100></a><br>";
-                    echo "<p>Температура: " . number_format($day1t5temp, 0) . "° <br>";
+                    echo "<p>Температура: " . number_format($day2t14temp, 0) . "° <br>";
 
-                    echo "Тиск: " . number_format($day1t5pressure * 0.75006375541921, 2)  . " мм рт. ст. <br>";
+                    echo "Тиск: " . number_format($day2t14pressure * $mmrtst, 2)  . " мм рт. ст. <br>";
 
-                    echo "Вологість: " . $day1t5humidity . " %</p><br>";
+                    echo "Вологість: " . $day2t14humidity . " %</p><br>";
                 ?>
           </div>
 
           <div class="forecastday">
                 <?php
-                    echo date("<p>d.m.y ", $day1t5time) . "<strong><br>Ранок</strong></p>";
-                    $pic_url = "http://openweathermap.org/img/wn/" . $day1t5pic_url . "@2x.png";
+                    echo date("<p>d.m.y ", $day2t20time) . "<strong><br>Вечір</strong></p>";
+                    $pic_url = "http://openweathermap.org/img/wn/" . $day2t20pic_url . "@2x.png";
                     echo "<br><a href='https://openweathermap.org/api'><img src=$pic_url  width=100 height=100></a><br>";
-                    echo "<p>Температура: " . number_format($day1t5temp, 0) . "° <br>";
+                    echo "<p>Температура: " . number_format($day2t20temp, 0) . "° <br>";
 
-                    echo "Тиск: " . number_format($day1t5pressure * 0.75006375541921, 2)  . " мм рт. ст. <br>";
+                    echo "Тиск: " . number_format($day2t20pressure * $mmrtst, 2)  . " мм рт. ст. <br>";
 
-                    echo "Вологість: " . $day1t5humidity . " %</p><br>";
+                    echo "Вологість: " . $day2t20humidity . " %</p><br>";
                 ?>
           </div>
 
@@ -201,46 +191,43 @@ for ($d = 0; $d < 6; $d++) {
 
           <div class="forecastday">
                 <?php
-                    echo date("<p>d.m.y ", $day1t5time) . "<strong><br>Ранок</strong></p>";
-                    $pic_url = "http://openweathermap.org/img/wn/" . $day1t5pic_url . "@2x.png";
+                    echo date("<p>d.m.y ", $day3t5time) . "<strong><br>Ранок</strong></p>";
+                    $pic_url = "http://openweathermap.org/img/wn/" . $day3t5pic_url . "@2x.png";
                     echo "<br><a href='https://openweathermap.org/api'><img src=$pic_url  width=100 height=100></a><br>";
-                    echo "<p>Температура: " . number_format($day1t5temp, 0) . "° <br>";
+                    echo "<p>Температура: " . number_format($day3t5temp, 0) . "° <br>";
 
-                    echo "Тиск: " . number_format($day1t5pressure * 0.75006375541921, 2)  . " мм рт. ст. <br>";
+                    echo "Тиск: " . number_format($day3t5pressure * $mmrtst, 2)  . " мм рт. ст. <br>";
 
-                    echo "Вологість: " . $day1t5humidity . " %</p><br>";
+                    echo "Вологість: " . $day3t5humidity . " %</p><br>";
                 ?>
           </div>
 
           <div class="forecastday">
                 <?php
-                    echo date("<p>d.m.y ", $day1t5time) . "<strong><br>Ранок</strong></p>";
-                    $pic_url = "http://openweathermap.org/img/wn/" . $day1t5pic_url . "@2x.png";
+                    echo date("<p>d.m.y ", $day3t14time) . "<strong><br>День</strong></p>";
+                    $pic_url = "http://openweathermap.org/img/wn/" . $day3t14pic_url . "@2x.png";
                     echo "<br><a href='https://openweathermap.org/api'><img src=$pic_url  width=100 height=100></a><br>";
-                    echo "<p>Температура: " . number_format($day1t5temp, 0) . "° <br>";
+                    echo "<p>Температура: " . number_format($day3t14temp, 0) . "° <br>";
 
-                    echo "Тиск: " . number_format($day1t5pressure * 0.75006375541921, 2)  . " мм рт. ст. <br>";
+                    echo "Тиск: " . number_format($day3t14pressure * $mmrtst, 2)  . " мм рт. ст. <br>";
 
-                    echo "Вологість: " . $day1t5humidity . " %</p><br>";
+                    echo "Вологість: " . $day3t14humidity . " %</p><br>";
                 ?>
           </div>
 
           <div class="forecastday">
                 <?php
-                    echo date("<p>d.m.y ", $day1t5time) . "<strong><br>Ранок</strong></p>";
-                    $pic_url = "http://openweathermap.org/img/wn/" . $day1t5pic_url . "@2x.png";
+                    echo date("<p>d.m.y ", $day3t20time) . "<strong><br>Вечір</strong></p>";
+                    $pic_url = "http://openweathermap.org/img/wn/" . $day3t20pic_url . "@2x.png";
                     echo "<br><a href='https://openweathermap.org/api'><img src=$pic_url  width=100 height=100></a><br>";
-                    echo "<p>Температура: " . number_format($day1t5temp, 0) . "° <br>";
+                    echo "<p>Температура: " . number_format($day3t20temp, 0) . "° <br>";
 
-                    echo "Тиск: " . number_format($day1t5pressure * 0.75006375541921, 2)  . " мм рт. ст. <br>";
+                    echo "Тиск: " . number_format($day3t20pressure * $mmrtst, 2)  . " мм рт. ст. <br>";
 
-                    echo "Вологість: " . $day1t5humidity . " %</p><br>";
+                    echo "Вологість: " . $day3t20humidity . " %</p><br>";
                 ?>
           </div>
 
         </section>
-
-
-
   </body>
 </html>
