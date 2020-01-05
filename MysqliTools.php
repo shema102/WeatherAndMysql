@@ -22,7 +22,7 @@ class MysqliTools
 
   public function __createDB($db_name){//стрворення БД
     if (mysqli_select_db($this -> link, $db_name)) {
-      echo "База " . $db_name . " існує\n";
+      //echo "База " . $db_name . " існує\n";
     }
     else{
       $sql = "CREATE DATABASE " . $db_name; 
@@ -82,7 +82,7 @@ class MysqliTools
   public function __query($content){//запит до MySQL
     $query = $content; 
     if(mysqli_query($this -> link, $query)){
-      echo "Запит виконано успішно \n";  
+     // echo "Запит виконано успішно \n";  
       } else {
         echo 'помилка при запиті: ' . mysqli_error($this -> link) . "\n";
       }

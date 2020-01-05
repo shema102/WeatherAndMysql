@@ -25,6 +25,9 @@ class StoreUpdateWeather{
 
     $weather = new WeatherTools($this->api_key);
     $forecast = $weather -> __GetWeather($this->city);
+    if($forecast["cod"] == "404"){
+      die($forecast["message"]);
+    }
 
     $database = new MysqliTools($this->ServerName, $this->username, $this->password);
 
@@ -162,12 +165,13 @@ class StoreUpdateWeather{
     //$database -> __query($sql_insert_content);
     if($database -> __checkIfColumnContentExist($this->table_name, "city", $this->city)){ //перевірка чи існує в таблиці рядок з назвою заданого міста, якщо існує то обновивти контент, якщо не існує то створити рядок
       $database -> __query($sql_update);
-      echo "\nupdated table";
+      //echo "\nupdated table";
     }
     else{
       $database -> __query($sql_insert_content);
-      echo "\ninserted in table";
+      //echo "\ninserted in table";
     }
+    $database -> __closeConnection();
   }
 }
 ?>
