@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        function loadJSON(callback) {   
+
+var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+xobj.open('GET', 'info.json', true);
+xobj.onreadystatechange = function () {
+      if (xobj.readyState == 4 && xobj.status == "200") {
+        callback(xobj.responseText);
+            }
+    };
+    xobj.send(null);  
+    }
+
+    loadJSON((data)=>{
+    // console.log(data);
+
+    
+    let jsone = JSON.parse(data);
+    console.log(jsone);
+
+    jsone.forEach(elem => {
+        console.log(elem);
+        
+    });
+
+
+    });
+        
+        </script>
+</body>
+</html>

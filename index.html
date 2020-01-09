@@ -7,16 +7,23 @@
 			body {
 				text-align: center;
 				vertical-align: middle;
+				position: relative;
+			}
+			.wrapper{
+			
+				margin-top: 200px;
 			}
 		</style>
 	</head>
 	<body>
-		<h2>Weather forecast</h2>
-			<form action="/weather.php" method="post">
-			  <label for="city">City name:</label>
-			  <input type="text" name="city" id="city">
-			  <input type="submit">
-			</form>
-		<p>По кліку відправляє введені дані в файл "/weather.php".</p>
+		<div class="wrapper">
+			<h2>Weather forecast</h2>
+				<form action="/weather.php" method="post">
+				  <label for="city">City name:</label>
+				  <input type="text" name="city" id="city">
+				  <input type="submit">
+				</form>
+			<!-- <p>По кліку відправляє введені дані в файл "/weather.php".</p> -->
+	</div>
 	</body>
 </html>
